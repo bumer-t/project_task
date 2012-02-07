@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>My test-site</title>
+
+
+        <!--<script type="text/javascript" src="{{ STATIC_URL }}js/pagination/jquery.js"></script>-->
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+
+
+	</head>
+	<body>
+    <H1>WORKS !</H1>
+    <table border="1" width="100%"  >
+        <tr>
+            <td>
+                1
+                {% if not user.is_authenticated %}
+                    <a href="{% url socialauth_begin 'google' %}">Google</a>    <!-- ?next={% firstof request.REQUEST.next request.path|urlencode %} -->
+                    <!--<a href="{% url socialauth_begin 'twitter' %}">Twitter</a> -->
+                {% else %}
+                    {{ user.last_name }} {{ user.first_name }}
+                    <a href="{% url logout %}">Выйти</a>
+                {% endif %}
+            </td>
+            <td>
+                2
+                <form method="post" action="" enctype="multipart/form-data" >
+                    {{ form.as_p }}
+                    <br/><br/>
+                    <input type="submit"/>
+
+                    {% if form.errors %}
+                        {{ form.errors }}
+                    {% endif %}
+                </form>
+
+                {% if user.is_authenticated %}
+                    <div id="content2"></div>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                3
+            </td>
+            <td>
+                <a href="https://docs.google.com/viewer?https://docs.google.com/viewer?file=/home/bumer/workspace/project_task/src/project_task/media/files/test.xlsx">_______________HERE______________1</a>
+                <br />
+                <a href="https://docs.google.com/viewer?url={{ MEDIA_URL}}test.xlsx">_______________HERE______________2</a>
+                <br />
+                <iframe src="http://docs.google.com/viewer?url=vk.com/doc15741420_8492697?dl=178aa2ce13160aaac1&embedded=true" width="600" height="780" style="border: none;"></iframe>
+            </td>
+        </tr>
+    </table>
+	</body>
+
+    <script>
+        function show()
+        {
+            $.ajax({
+                url: "{% url files_url %}",
+                cache: false,
+                success: function(html){
+                    $("#content2").html(html);
+                }
+            });
+        }
+
+        $(document).ready(function(){
+            show();
+//            setInterval('show()',1000);
+        });
+
+    </script>
+
+
+
+</html>
+

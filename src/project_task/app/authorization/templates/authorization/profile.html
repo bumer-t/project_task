@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block application %}
+	Здесь будет профиль пользователя -  {{ user_name }}.
+	<br/><br/>
+	
+	{% if form.errors %}
+		<p class="error">Неверное имя или пароль</p>
+	{% endif %}
+	
+	<form action='/accounts/login/' method='post'>
+		<label for="username">Имя пользователя : </label>
+		<input type="text" name="username" value="" id="username">
+		<label for="password">Пароль :</label>
+		<input type="password" name="password" value="" id ="password"/>
+		
+		<input type="submit" value="login"/>
+		<input type="hidden" name="next" value="{{ next|escape }}">	
+	</form>
+	
+{% endblock %}

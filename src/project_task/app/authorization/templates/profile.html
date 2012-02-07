@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block application %}
+	<table width="100%">
+		<tr>
+			<td width="80%">
+				<h3 align='center'> Профиль {{ user_name }} :    </h3>     
+			</td>
+			<td width="20%">
+				тут картинка
+			</td>
+		</tr>
+		</tr>
+			<td>
+				<a href="{% url authorization.profile_edit %}">Редактировать профиль</a>
+			</td>
+			
+		</tr>
+			<td>
+				Имя :
+			</td>
+			<td>
+			</td>
+		</tr>
+		</tr>
+			<td>
+				Дата рождения :
+			</td>
+			<td>
+			</td>
+		</tr>
+		</tr>
+			<td>
+				Пол :
+			</td>
+			<td>
+			</td>
+		</tr>
+		</tr>
+			<td>
+				Город :
+			</td>
+			<td>
+			</td>
+		</tr>
+		</tr>
+			<td>
+				e-mail :
+			</td>
+			<td>
+			</td>
+		</tr>
+	</table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block application %}
+	{% for news in last_news %}
+		[{{ news.pub_date|date:"d.m.Y"}}]
+		<strong>
+			<a href="{% url news.news_detail news_id=news.id %}">
+				{{ news.title }}
+			</a>
+		</strong>
+		<p>{{ news.description }}</p>
+	{% endfor %}
+{% endblock %}

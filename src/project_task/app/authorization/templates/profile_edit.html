@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block application %}
+	Форма
+	<form method="post" action="" enctype="multipart/form-data" >
+		{{  prof_edit_form.as_p }}
+		<br/><br/>
+        <input type="submit"/>
+    </form>
+{% endblock %}
+
+<!-- Ава : <input type="file" name="filename">  -->

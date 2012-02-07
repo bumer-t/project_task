@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block application %}
+	<h1>{{ news.title }}</h1>
+	<hr/>
+	<p>{{ news.text }}</p>
+	<hr/>
+	
+	<h3> Оставить комментарий : </h3>
+	<form action="." method="POST">
+		<table>
+			{{ form }}
+		</table>
+		<input type="submit"/>
+	</form>
+	
+	{% if comment_count %}
+		<h3> Комментариев : {{ comment_count }} </h3>
+		{% for comment in comments %}
+			<div>
+				<strong> {{ comment.username }} </strong> пишет: <br/>
+				{{ comment.text }} <br/>
+				{{ comment.pub_date|date:"d.m.Y, H:m" }}
+			<div>
+			<br/><br/>
+		{% endfor %}
+	{% else %}
+		<h3> Комментариев пока нет :( </h3>
+	{% endif %}
+	
+	
+	
+{% endblock %}
